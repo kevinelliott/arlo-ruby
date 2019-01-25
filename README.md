@@ -1,4 +1,6 @@
 # Arlo
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fkevinelliott%2Farlo.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fkevinelliott%2Farlo?ref=badge_shield)
+
 
 ## Installation
 
@@ -35,3 +37,6 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
 
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fkevinelliott%2Farlo.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fkevinelliott%2Farlo?ref=badge_large)
