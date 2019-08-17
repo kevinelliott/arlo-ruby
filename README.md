@@ -2,7 +2,7 @@
 
 A client library written in Ruby to interact with the Netgear Arlo camera system.
 
-Netgear notoriously keeps a closed system around the Arlo API. They do not publish the API specifications publicly, and if it was up to them you would never be able to access your devices directly. This is because they rely on the revenue from cloud-based subscriptions to store and manage your equipment.
+Netgear notoriously keeps a closed system around the Arlo API. They do not publish the API specifications publicly, and if it was up to them you would never be able to access your devices directly. This is because they rely on the revenue from cloud-based subscriptions to store and manage your equipment and it is not in their interests to open it up to you.
 
 For those of us who want to backup our videos to our own NAS for backup, sync to a different cloud provider, or otherwise integrate the system into our existing home automation platforms, this library was written.
 
