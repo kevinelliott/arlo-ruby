@@ -1,5 +1,9 @@
 # Arlo
 
+A client library written in Ruby to interact with the NetGear Arlo camera system. While this is functional, it is still incomplete.
+
+Contributions of any kind at this time are welcome and encouraged!
+
 ## Installation
 
 Add this line to your application's Gemfile:
