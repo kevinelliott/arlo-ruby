@@ -36,6 +36,8 @@ response = client.login(email: 'YOUR EMAIL', password: 'YOUR PASSWORD')
 
 ### Get Devices
 
+Retrieves all of the devices associated with your account.
+
 ```ruby
 devices = client.devices
 ```
@@ -68,6 +70,8 @@ devices = client.devices
 
 ### Setup a Basestation Object
 
+This allows you to operate directly on a basestation.
+
 ```ruby
 basestation = Arlo::Basestation.new(devices.detect { |device| device.deviceType == 'basestation' }, client)
 ```
@@ -79,13 +83,20 @@ basestation.system_mode(:disarm)
 basestation.system_mode(:arm)
 ```
 
+Valid modes: `:disarm`, `:arm`
+
 ### Get Video Library
 
+Returns an array of OpenStruct that contain details about the captured videos associated with your basestation.
+
 ```ruby
-videos = basestation.library
+videos = basestation.library(2.weeks.ago, Time.current)
 ```
 
 ### Download Video Library
+
+This is useful in order to backup your captured videos to local storage, or perhaps a NAS on your network.
+
 ```ruby
 basestation.download_library('arlo_videos')
 Downloading 1566061318696 to arlo_videos/1566061318696.mp4...
@@ -99,7 +110,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/arlo. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/kevinelliott/arlo. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License
