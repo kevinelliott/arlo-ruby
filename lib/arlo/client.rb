@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'awesome_print'
+require 'down'
 require 'ld-eventsource'
 require 'lhc'
 require 'json'
@@ -9,8 +10,9 @@ require 'terminal-table'
 LHC.configure do |c|
   c.interceptors = [LHC::Auth]
 
-  c.endpoint(:login, 'https://my.arlo.com/hmsweb/login/v2')
+  c.endpoint(:library, 'https://my.arlo.com/hmsweb/users/library')
   c.endpoint(:devices, 'https://my.arlo.com/hmsweb/users/devices')
+  c.endpoint(:login, 'https://my.arlo.com/hmsweb/login/v2')
   c.endpoint(:notify, 'https://my.arlo.com/hmsweb/users/devices/notify/{to}')
 end
 
@@ -83,6 +85,10 @@ module Arlo
       end
     end
 
+    def download(from, to)
+      Down.download(from, destination: to)
+    end
+
     def headers
       {
         'DNT': '1',
@@ -99,7 +105,13 @@ module Arlo
       body[:from] = "#{user_id}_web"
       body[:to] = basestation.deviceId
 
-      LHC.post(:notify, params: { to: body[:to] }, body: body, headers: headers.merge('xCloudId': basestation.xCloudId))
+      response = LHC.post(:notify, params: { to: body[:to] }, body: body, headers: headers.merge('xCloudId': basestation.xCloudId))
+      response.data.success
+    end
+
+    def post(url, params = {}, body = {})
+      response = LHC.post(url, params: params, body: body, headers: headers)
+      response.data
     end
 
     def subscribe(basestation)
