@@ -1,4 +1,4 @@
-# Arlo
+# arlo-ruby
 
 A client library written in Ruby to interact with the Netgear Arlo camera system.
 
