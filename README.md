@@ -18,19 +18,19 @@ Or install it yourself as:
 
 ## Usage
 
-# Initialize the client
+### Initialize the client
 
 ```ruby
 client = Arlo::Client.new
 ```
 
-# Login
+### Login
 
 ```ruby
 response = client.login(email: 'YOUR EMAIL', password: 'YOUR PASSWORD')
 ```
 
-# Get Devices
+### Get Devices
 
 ```ruby
 devices = client.devices
@@ -62,14 +62,26 @@ devices = client.devices
 +---------------+---------------+----------------------------------+-------------+---------------+-----------+---------------------+-------------+----------------------+
 ```
 
-# Get Video Library
+### Setup a Basestation Object
 
 ```ruby
 basestation = Arlo::Basestation.new(devices.detect { |device| device.deviceType == 'basestation' }, client)
+```
+
+### Set Mode
+
+```ruby
+basestation.system_mode(:disarm)
+basestation.system_mode(:arm)
+```
+
+### Get Video Library
+
+```ruby
 videos = basestation.library
 ```
 
-# Download Video Library
+### Download Video Library
 ```ruby
 basestation.download_library('arlo_videos')
 Downloading 1566061318696 to arlo_videos/1566061318696.mp4...
