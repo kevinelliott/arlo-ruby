@@ -11,12 +11,12 @@ module Arlo
     end
 
     def library(from = 4.weeks.ago, to = Time.current)
-      client.post(:library, {}, { dateFrom: from.strftime('%Y%m%d'), dateTo: to.strftime('%Y%m%d') })
+      client.post(:library, {}, { dateFrom: from.strftime('%Y%m%d'), dateTo: to.strftime('%Y%m%d') }).data
     end
 
     def download_library(to = 'arlo_videos')
       Dir.mkdir(to) unless File.exists?(to)
-      library.data.each do |video|
+      library.each do |video|
         destination = "#{to}/#{video.name}.mp4"
         puts "Downloading #{video.name} to #{destination}..."
         client.download(video.presignedContentUrl, destination)
