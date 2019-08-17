@@ -9,7 +9,7 @@ While this is functional, it is still incomplete. Contributions of any kind at t
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'arlo'
+gem 'arlo-ruby'
 ```
 
 And then execute:
@@ -18,7 +18,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install arlo
+    $ gem install arlo-ruby
 
 ## Usage
 
