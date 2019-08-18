@@ -11,7 +11,7 @@ module Arlo
     end
 
     def library(from = 4.weeks.ago, to = Time.current)
-      client.post(:library, {}, { dateFrom: from.strftime('%Y%m%d'), dateTo: to.strftime('%Y%m%d') }).data
+      client.post(:library, body: { dateFrom: from.strftime('%Y%m%d'), dateTo: to.strftime('%Y%m%d') })
     end
 
     def library_download(to = 'arlo_videos')
@@ -24,7 +24,7 @@ module Arlo
     end
 
     def library_metadata(from = 4.weeks.ago, to = Time.current)
-      client.post(:library_metadata, {}, { dateFrom: from.strftime('%Y%m%d'), dateTo: to.strftime('%Y%m%d') })
+      client.post(:library_metadata, body: { dateFrom: from.strftime('%Y%m%d'), dateTo: to.strftime('%Y%m%d') })
     end
 
     def system_mode(mode = :arm)
