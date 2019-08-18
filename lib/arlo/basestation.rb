@@ -14,13 +14,17 @@ module Arlo
       client.post(:library, {}, { dateFrom: from.strftime('%Y%m%d'), dateTo: to.strftime('%Y%m%d') }).data
     end
 
-    def download_library(to = 'arlo_videos')
+    def library_download(to = 'arlo_videos')
       Dir.mkdir(to) unless File.exists?(to)
       library.each do |video|
         destination = "#{to}/#{video.name}.mp4"
         puts "Downloading #{video.name} to #{destination}..."
         client.download(video.presignedContentUrl, destination)
       end
+    end
+
+    def library_metadata(from = 4.weeks.ago, to = Time.current)
+      client.post(:library_metadata, {}. { dateFrom: from.strftime('%Y%m%d'), dateTo: to.strftime('%Y%m%d') }}.data
     end
 
     def system_mode(mode = :arm)

@@ -104,7 +104,7 @@ videos = basestation.library(2.weeks.ago, Time.current)
 This is useful in order to backup your captured videos to local storage, or perhaps a NAS on your network.
 
 ```ruby
-basestation.download_library('arlo_videos')
+basestation.library_download('arlo_videos')
 Downloading 1566061318696 to arlo_videos/1566061318696.mp4...
 ```
 
