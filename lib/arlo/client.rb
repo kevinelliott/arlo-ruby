@@ -105,13 +105,16 @@ module Arlo
       body[:from] = "#{user_id}_web"
       body[:to] = basestation.deviceId
 
-      response = LHC.post(:notify, params: { to: body[:to] }, body: body, headers: headers.merge('xCloudId': basestation.xCloudId))
-      response.data.success
+      post(:notify, params: { to: body[:to] }, body: body, headers: headers.merge('xCloudId': basestation.xCloudId))
     end
 
     def post(url, params = {}, body = {})
       response = LHC.post(url, params: params, body: body, headers: headers)
-      response.data
+      if response.data.success
+        response.data.data
+      else
+        raise StandardError, 'Error with request'
+      end
     end
 
     def subscribe(basestation)
